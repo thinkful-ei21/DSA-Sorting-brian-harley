@@ -23,17 +23,27 @@ function bucketSort(arr, smallest, biggest) {
   //Build array of nulls of size 'biggest', where smallest and biggest indices are not null
   for (let i = 0; i <= biggest; i++) {
     if (i === smallest || i === biggest) {
-      found.push(i);
+      found.push([i]);
     } else {
-      found.push(null);
+      found.push([]);
     }
   }
   console.log(found);
   for (let i = 0; i < arr.length; i++) {
-    found[arr[i]] = arr[i];
+    if( i === smallest || i === biggest) {
+      continue;
+    }
+    found[arr[i]].push(arr[i]);
   }
-  console.log(found);
-  return found.filter(num => num !== null);
+  //console.log(found);
+  let result = [];
+  found.forEach(item => {
+    console.log(item);
+    if (item.length > 0) {
+      result = [...result, ...item];
+    }
+  });
+  return result;
 }
 
 function randomSort(arr){
@@ -43,8 +53,8 @@ function randomSort(arr){
   return arr;
 }
 
-console.log(converter.length);
-console.log(converter);
+//console.log(converter.length);
+//console.log(converter);
 const array = bucketSort(converter, 1, 98);
 console.log(array);
 console.log(array.length);
