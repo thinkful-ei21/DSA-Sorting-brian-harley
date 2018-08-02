@@ -85,15 +85,16 @@ const Array = '89 30 25 32 72 70 51 42 25 24 53 55 78 50 13 40 48 32 26 2 14 33 
 function convert(arr){
   let parsearr = [];
   arr = arr.split(' ');
+  //console.log(arr.length);
   arr.forEach(x => parsearr.push(parseInt(x)));
 
   return parsearr;
 }
 
 let converter = convert(Array);
+console.log(quickSort(converter));
 
 //console.log(quickSort(converter));
 
 //console.log(mergeSort(converter));
 
-module.exports = {converter};
